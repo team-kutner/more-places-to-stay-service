@@ -5,3 +5,4 @@
   // make another pull request
   // approve the pull request and merge the branch to the master
   // MADE CHANGE
+  // Branch's name is changed to "john-branch"
