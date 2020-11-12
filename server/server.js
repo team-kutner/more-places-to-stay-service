@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
-const db = require('../database/dbConnection.js');
+const router = require('../database/router.js');
 
 
 app.use(express.static(__dirname + '/../dist'));
@@ -11,7 +11,11 @@ app.use(bodyParser.json());
 
 app.get('/api/homes', (req, res) => {
   console.log('successful get');
-  res.send('successful get');
+  router.getAllHomesFromDB((err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.send(result);
+  })
 })
 
 app.listen(port, () => {

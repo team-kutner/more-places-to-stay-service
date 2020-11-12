@@ -6,7 +6,7 @@ const router = require('../database/router.js')
 const loopOverSampleData = (input) => {
   for (var i = 0; i < input.length; i++) {
     console.log('Number ', i);
-    router.addHomeToDatabase(input[i]);
+    router.addHomeToDB(input[i]);
   }
 }
 
