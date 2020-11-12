@@ -5,14 +5,11 @@ var getAllHomesFromDB = (callback) => {
   dbConnection.query(queryStr, callback);
 };
 
-var addHomeToDB = (homeObject) => {
+var addHomeToDB = (homeObject, callback) => {
   const {img_url, home_type, beds, description, cost_per_night} = homeObject;
   const homeRow = [img_url, home_type, beds, description, cost_per_night];
   var queryStr = 'INSERT INTO homes(img_url, home_type, beds, description, cost_per_night) VALUES (?, ?, ?, ?, ?)';
-  dbConnection.query(queryStr, homeRow, (err, result) => {
-    if (err) throw err;
-    console.log(result);
-  });
+  dbConnection.query(queryStr, homeRow, callback);
 };
 
 module.exports = {

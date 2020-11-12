@@ -5,9 +5,11 @@ const router = require('../database/router.js')
 
 const loopOverSampleData = (input) => {
   for (var i = 0; i < input.length; i++) {
-    console.log('Number ', i);
-    router.addHomeToDB(input[i]);
+    router.addHomeToDB(input[i], ((err, result) => {
+      if (err) throw err;
+      console.log(result);
+    }));
   }
 }
 
-loopOverSampleData(sampleData);
+loopOverSampleData(sampleData,);
