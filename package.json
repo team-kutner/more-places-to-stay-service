@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "webpack -d --watch",
-    "start": "nodemon server/server.js"
+    "start": "nodemon server/server.js",
+    "seed": "node database/seeding/seeds.js"
   },
   "dependencies": {
     "axios": "^0.21.0",
