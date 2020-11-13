@@ -4,10 +4,9 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/teamTarly/aquabnb-booking
+  - https://github.com/teamTarly/aquabnb-reviews
+  - https://github.com/teamTarly/Aquabnb-photos
 
 ## Table of Contents
 
