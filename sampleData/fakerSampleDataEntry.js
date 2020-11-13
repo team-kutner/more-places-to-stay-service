@@ -40,6 +40,5 @@ const createFakeListings = (() => {
 var fakeListings = createFakeListings();
 console.log(fakeListings);
 
-module.export = createFakeListing;
-
+module.exports = createFakeListings;
 

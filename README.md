@@ -23,7 +23,7 @@
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 6.13.0
-- etc
+-
 
 ## Development
 
@@ -32,7 +32,17 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install -g webpack
-npm install
+npm install --save-dev webpack@4
+npm install --save-dev webpack-cli
+npm install -D babel-loader
+npm install -D @babel/core
+npm install @babel/preset-env
+npm install --save-dev nodemon
+npm install --save-dev @babel/preset-react
+npm install express --save
+npm install body-parser
+npm install --save mysql2
+npm install axios
+
 ```
 

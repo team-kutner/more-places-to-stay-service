@@ -8,6 +8,7 @@ CREATE TABLE homes (
   home_type VARCHAR(250),
   beds INT,
   description TEXT,
+  city VARCHAR(250),
   cost_per_night INT
 );
 

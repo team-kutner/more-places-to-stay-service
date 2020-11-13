@@ -5,12 +5,17 @@ var getAllCitiesFromDB = (callback) => {
   dbConnection.query(queryStr, callback);
 };
 
+// var addCityToDB = (homeObject, callback) => {
+//   const {img_url, home_type, beds, description, cost_per_night} = homeObject;
+//   const homeRow = [img_url, home_type, beds, description, cost_per_night];
+//   var queryStr = 'INSERT INTO cityLife(img_url, home_type, beds, description, cost_per_night) VALUES (?, ?, ?, ?, ?)';
+//   dbConnection.query(queryStr, homeRow, callback);
+// };
+
 var addCityToDB = (homeObject, callback) => {
-  const {img_url, home_type, beds, description, cost_per_night} = homeObject;
-  const homeRow = [img_url, home_type, beds, description, cost_per_night];
-  var queryStr = 'INSERT INTO cityLife(img_url, home_type, beds, description, cost_per_night) VALUES (?, ?, ?, ?, ?)';
-  dbConnection.query(queryStr, homeRow, callback);
-};
+    var queryStr = 'INSERT INTO cityLife(img_url, home_type, beds, description, cost_per_night) VALUES (?, ?, ?, ?, ?)';
+    dbConnection.query(queryStr, homeRow, callback);
+  };
 
 module.exports = {
   getAllCitiesFromDB,
