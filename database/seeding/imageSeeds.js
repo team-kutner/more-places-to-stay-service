@@ -1,4 +1,4 @@
-var s3HostedImgs = [
+const imageSeeds = [
   'https://aquabnblistingimages.s3-us-west-1.amazonaws.com/home_images/apartment-3564955_640.jpg',
   'https://aquabnblistingimages.s3-us-west-1.amazonaws.com/home_images/apartment-building-1149751_640.jpg',
   'https://aquabnblistingimages.s3-us-west-1.amazonaws.com/home_images/architecture-1834813_640.jpg',
@@ -31,4 +31,4 @@ var s3HostedImgs = [
   'https://aquabnblistingimages.s3-us-west-1.amazonaws.com/home_images/vintage-1149558_640.jpg'
 ];
 
-module.exports = s3HostedImgs;
+module.exports = imageSeeds;
