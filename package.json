@@ -9,7 +9,9 @@
   "scripts": {
     "build": "webpack -d --watch",
     "start": "nodemon server/server.js",
-    "seed": "node database/seeding/seeds.js"
+    "seed": "node database/seeding/seeds.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -21,6 +23,7 @@
     "mysql2": "^2.2.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0"
   },
@@ -29,10 +32,13 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "babel-loader": "^8.2.1",
+    "babel-plugin-styled-components": "^1.11.1",
     "eslint": "^7.13.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "eslint-plugin-react": "^7.21.5",
-    "nodemon": "^2.0.6"
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "supertest": "^6.0.1"
   },
   "version": "1.0.0",
   "main": ".eslintrc.js",
