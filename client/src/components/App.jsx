@@ -4,18 +4,23 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components'
 import axios from 'axios';
 
+import TopRow from './TopRow.jsx';
+
 
 const App = () => {
   const [name, setName] = useState('tom');
 
   return (
     <div>
-      <p>hey hey hey</p>
+      <p>what's up</p>
+      <TopRow/>
       <p onClick={() => setName('jack')}>{name}</p>
     </div>
   )
 }
 
+
+export default App;
 // class App extends React.Component {
 //   constructor(props) {
 //     super(props)
@@ -32,4 +37,4 @@ const App = () => {
 
 
 
-ReactDOM.render(<App />, document.getElementById('app'));
+// ReactDOM.render(<App />, document.getElementById('app'));
