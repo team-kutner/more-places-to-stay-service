@@ -26,7 +26,16 @@ const createFakeListing = (() => {
     faker.random.number({
       'min': 10,
       'max': 50
-    })
+    }),
+    faker.random.number({
+      'min': 0,
+      'max': 1000
+    }),
+    faker.random.float({
+      'min': 1,
+      'max': 5
+    }),
+    faker.random.boolean()
   ]
 });
 
@@ -39,7 +48,7 @@ const createFakeListings = (() => {
 });
 
 let fakeListings = createFakeListings();
-let sql = "INSERT INTO homes (img_url, home_type, beds, description, city, cost_per_night) VALUES ?";
+let sql = "INSERT INTO homes (img_url, home_type, beds, description, city, cost_per_night, reviews, avg_rating, isSuperhost) VALUES ?";
 dbConnection.query(sql, [fakeListings], (err) => {
   if (err) throw err;
   dbConnection.end();
