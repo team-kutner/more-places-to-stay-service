@@ -4,6 +4,7 @@ USE nearbyHomes;
 
 CREATE TABLE homes (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(250),
   img_url TEXT,
   home_type VARCHAR(250),
   beds INT,

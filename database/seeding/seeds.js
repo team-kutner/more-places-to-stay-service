@@ -12,9 +12,9 @@ const home_types = ['home', 'hotel', 'cabin', 'apartment', 'mansion', 'igloo', '
 const img_urls = s3HostedImgs;
 const cities = ['menlo park', 'palo alto', 'la honda', 'san carlos', 'pescadero', 'half moon bay'];
 
-
 const createFakeListing = (() => {
   return [
+    faker.name.findName() + ' AirBnB',
     img_urls[getRandomInt(img_urls)],
     home_types[getRandomInt(home_types)],
     faker.random.number({
@@ -48,7 +48,7 @@ const createFakeListings = (() => {
 });
 
 let fakeListings = createFakeListings();
-let sql = "INSERT INTO homes (img_url, home_type, beds, description, city, cost_per_night, reviews, avg_rating, isSuperhost) VALUES ?";
+let sql = "INSERT INTO homes (name, img_url, home_type, beds, description, city, cost_per_night, reviews, avg_rating, isSuperhost) VALUES ?";
 dbConnection.query(sql, [fakeListings], (err) => {
   if (err) throw err;
   dbConnection.end();

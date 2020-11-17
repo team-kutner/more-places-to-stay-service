@@ -8,7 +8,7 @@ it('passes test for endpoint /api/nearbyHomes', () => {
   .then(response => {
     expect(response.status).toBe(200);
     expect(response).toBeDefined();
-    expect(response.body.length).toBe(102);
+    expect(response.body.length).toBe(100);
   })
 });
 
