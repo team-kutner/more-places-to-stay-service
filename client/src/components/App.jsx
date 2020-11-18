@@ -6,6 +6,9 @@ import axios from 'axios';
 import TopRow from './TopRow.jsx';
 import ToggleContainer from './ToggleContainer.jsx';
 import Listings from './Listings.jsx';
+import Listing from './Listing.jsx';
+import dummyData from '../dummydata.js';
+
 
 
 
@@ -26,8 +29,9 @@ const App = () => {
 
 return (
   <Container>
+      {console.log('dummyData: ', dummyData)}
     <TopRow/>
-    <Listings/>
+    <Listings dummyData = {dummyData}/>
   </Container>
 )
 }
