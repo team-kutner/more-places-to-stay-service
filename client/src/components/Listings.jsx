@@ -19,10 +19,12 @@ height: 278px;
 `;
 
 
-const Listings = ({ dummyData }) => {
-  const allListings = dummyData.map((listing, index) => {
-    return <Listing listing = {listing}/>
+const Listings = ({ listingData }) => {
+
+  const allListings = listingData.map((listing, index) => {
+      return <Listing listing = {listing}/>
   })
+
   return (
     <Body>
       {allListings}
@@ -35,19 +37,15 @@ export default Listings;
 
 
 /////////////////////////
-// return (
-//   <Body>
-//     <Listing dummyData = {dummyData}/>
-//     <ListingGap></ListingGap>
-//     <Listing dummyData = {dummyData}/>
-//     <ListingGap></ListingGap>
-//     <Listing dummyData = {dummyData}/>
-//     <ListingGap></ListingGap>
-//     <Listing dummyData = {dummyData}/>
-//     <ListingGap></ListingGap>
-//     <Listing dummyData = {dummyData}/>
-//     <ListingGap></ListingGap>
-//     <Listing dummyData = {dummyData}/>
-//   </Body>
-// )
+// console.log('listingData in listings: ', listingData);
+// if (listingData) {
+//   console.log('aloha');
+//   const allListings = listingData.map((listing, index) => {
+//     return <Listing listing = {listing}/>
+//   })
+// } else {
+//   console.log('lollo');
+//   const allListings = dummyData.map((listing, index) => {
+//     return <Listing listing = {listing}/>
+//   })
 // }
