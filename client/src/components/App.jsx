@@ -20,13 +20,43 @@ const Container = styled.div`
   grid-template-areas: "header"
                        "listings";
   background-color: #fff;
-  border-style: solid;
+  // border-style: solid;
   font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
   `;
 
 const App = () => {
   const [name, setName] = useState('tom');
   const [listingData, setListingData] = useState('');
+  const [firstImg, setFirstImg] =  useState(0);
+  const [lastImg, setLastImg] =  useState(4);
+  const [pageNum, setPageNum] = useState(1);
+
+  const clickLeft = () => {
+    console.log('what is up dood');
+    if (firstImg !== 0) {
+      setFirstImg(firstImg - 4);
+      setLastImg(lastImg - 4);
+      setPageNum(pageNum - 1);
+    } else {
+      setFirstImg(8);
+      setLastImg(12);
+      setPageNum(3);
+    }
+  };
+
+  const clickRight = () => {
+    if (firstImg !== 8) {
+      setFirstImg(firstImg + 4);
+      setLastImg(lastImg + 4);
+      setPageNum(pageNum + 1);
+    } else {
+      setFirstImg(0);
+      setLastImg(4);
+      setPageNum(1);
+    }
+  };
+
+  const clickerConsole = () => { console.log('hey hey man')};
 
   useEffect(() => {
     axios.get('/api/nearbyHomes/city')
@@ -43,8 +73,8 @@ return (
       <Container>
         {listingData.length !== 0 &&
           <>
-          <TopRow/>
-          <Listings listingData = {listingData}/>
+            <TopRow clickLeft = { clickLeft } clickRight = { clickRight } pageNum = { pageNum }/>
+            <Listings listingData = {listingData.slice(firstImg, lastImg)}/>
           </>
         }
       </Container>

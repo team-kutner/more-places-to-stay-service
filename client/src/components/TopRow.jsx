@@ -11,7 +11,7 @@ justify-content: space-between;
 align-items: center;
 box-sizing: border-box;
 padding-bottom: 24px;
-background: tan;
+background: white;
 `;
 
 const Banner = styled.div`
@@ -19,12 +19,12 @@ font-size: 22px;
 font-weight: 400;
 `;
 
-const TopRow = () => {
+const TopRow = ( { clickRight, clickLeft, pageNum }) => {
 
   return (
     <Header>
       <Banner>More places to stay</Banner>
-      <ToggleContainer/>
+      <ToggleContainer clickLeft = { clickLeft } clickRight = { clickRight } pageNum = { pageNum }/>
     </Header>
   )
 }

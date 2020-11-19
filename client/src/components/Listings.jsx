@@ -6,10 +6,11 @@ import Listing from './Listing.jsx';
 
 const Body = styled.div`
 grid-area: listings;
-overflow: scroll;
+overflow-x: scroll;
+overflow-y: hidden;
 display: flex;
 justify-content: space-between;
-background: lightgreen;
+background: white;
 `;
 
 const ListingGap = styled.div`

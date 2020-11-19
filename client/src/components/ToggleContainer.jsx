@@ -60,18 +60,20 @@ transform: rotate(-45deg);
 `;
 
 
-const ToggleContainer = () => {
-
+// const ToggleContainer = () => {
+const ToggleContainer = ({ clickRight, clickLeft, pageNum }) => {
+  console.log('pageNum: ', pageNum);
 
   return (
     <Toggle>
       <PageNumberContainer>
-        <PageNumberDigit>1/3</PageNumberDigit>
+  <PageNumberDigit>{pageNum}/3</PageNumberDigit>
       </PageNumberContainer>
-      <Circle>
+      <Circle onClick = {() => clickLeft() }  >
+        <rightArrow></rightArrow>
         <rightArrow></rightArrow>
       </Circle>
-      <Circle>
+      <Circle onClick = {() => clickRight() }>
         <leftArrow></leftArrow>
       </Circle>
     </Toggle>
