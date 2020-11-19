@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { MdKeyboardArrowRight } from 'react-icons/md';
+import { MdKeyboardArrowLeft } from 'react-icons/md';
 
 
 const Toggle = styled.div`
 width: 118px;
 display: flex;
 justify-content: space-between;
-font-size: 14px;
+font-size: 16px;
 `;
 
 const Circle = styled.div`
@@ -41,7 +45,7 @@ text-align: center;
 const PageNumberDigit = styled.div`
 `;
 
-const leftArrow = styled.div`
+const Arrow = styled.div`
 .arrow {
 border: solid black;
 border-width: 0 3px 3px 0;
@@ -50,31 +54,29 @@ padding: 3px;
 transform: rotate(135deg)
 }
 `;
-const rightArrow = styled.div`
-.arrow {
-border: solid black;
-border-width: 0 3px 3px 0;
-display: inline-block;
-// padding: 3px;
-transform: rotate(-45deg);
-`;
+// const rightArrow = styled.div`
+// .arrow {
+// border: solid black;
+// border-width: 0 3px 3px 0;
+// display: inline-block;
+// // padding: 3px;
+// transform: rotate(-45deg);
+// `;
 
 
 // const ToggleContainer = () => {
 const ToggleContainer = ({ clickRight, clickLeft, pageNum }) => {
-  console.log('pageNum: ', pageNum);
 
   return (
     <Toggle>
       <PageNumberContainer>
-  <PageNumberDigit>{pageNum}/3</PageNumberDigit>
+        <PageNumberDigit>{pageNum}/3</PageNumberDigit>
       </PageNumberContainer>
       <Circle onClick = {() => clickLeft() }  >
-        <rightArrow></rightArrow>
-        <rightArrow></rightArrow>
+        <Arrow><MdKeyboardArrowLeft size = {24}/></Arrow>
       </Circle>
       <Circle onClick = {() => clickRight() }>
-        <leftArrow></leftArrow>
+        <Arrow><MdKeyboardArrowRight size = {24}/></Arrow>
       </Circle>
     </Toggle>
   )

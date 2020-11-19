@@ -6,7 +6,7 @@ import Listing from './Listing.jsx';
 
 const Body = styled.div`
 grid-area: listings;
-overflow-x: scroll;
+overflow-x: hidden;
 overflow-y: hidden;
 display: flex;
 justify-content: space-between;
@@ -20,10 +20,10 @@ height: 278px;
 `;
 
 
-const Listings = ({ listingData }) => {
+const Listings = ({ listingData, clickStar }) => {
 
   const allListings = listingData.map((listing, index) => {
-      return <Listing listing = {listing}/>
+      return <Listing listing = {listing} clickStar = { clickStar }/>
   })
 
   return (

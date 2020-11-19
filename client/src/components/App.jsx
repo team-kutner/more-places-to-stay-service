@@ -8,6 +8,8 @@ import ToggleContainer from './ToggleContainer.jsx';
 import Listings from './Listings.jsx';
 import Listing from './Listing.jsx';
 import dummyData from '../dummydata.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -30,9 +32,18 @@ const App = () => {
   const [firstImg, setFirstImg] =  useState(0);
   const [lastImg, setLastImg] =  useState(4);
   const [pageNum, setPageNum] = useState(1);
+  const [starred, setStarred] = useState([]);
+
+  const clickStar = (e) => {
+    console.log('e.target is: ', e.target);
+    console.log('e.target.id is: ', e.target.id);
+    let newArr = starred.slice();
+    newArr.push(e.target.id);
+    setStarred(newArr);
+    console.log('starred: ', starred);
+  }
 
   const clickLeft = () => {
-    console.log('what is up dood');
     if (firstImg !== 0) {
       setFirstImg(firstImg - 4);
       setLastImg(lastImg - 4);
@@ -56,8 +67,6 @@ const App = () => {
     }
   };
 
-  const clickerConsole = () => { console.log('hey hey man')};
-
   useEffect(() => {
     axios.get('/api/nearbyHomes/city')
     .then(res => {
@@ -74,7 +83,7 @@ return (
         {listingData.length !== 0 &&
           <>
             <TopRow clickLeft = { clickLeft } clickRight = { clickRight } pageNum = { pageNum }/>
-            <Listings listingData = {listingData.slice(firstImg, lastImg)}/>
+            <Listings listingData = { listingData.slice(firstImg, lastImg) } clickStar = { clickStar }/>
           </>
         }
       </Container>
