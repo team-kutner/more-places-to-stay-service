@@ -1,9 +1,7 @@
-// import React from 'react';
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-// import { AiFillHeart } from ';'
 
 
 const Body = styled.div`
@@ -101,19 +99,6 @@ const StarText = styled.div`
 
 
 const Listing = ({ listing, clickStar, starred, id }) => {
-  // console.log('id is: ', id);
-  // console.log('listing.starring is: ', listing.starring);
-  // console.log('starred = ', starred);
-  // if (starred) {
-  //   for (var i = 0; i < starred.length; i++) {
-  //     // console.log('listing.id: ', listing.id);
-  //     // console.log('starred[' + i + ']', starred[i]);
-  //     if ( listing.id.toString() === starred[i] ) {
-  //       var isStarred = true;
-  //     }
-  //   }
-  // }
-// console.log('in listing for listing ', listing);
   return (
     <Body>
       <ListingImageCont>
@@ -122,10 +107,6 @@ const Listing = ({ listing, clickStar, starred, id }) => {
           {listing.star ? (<AiFillHeart size={24} color={'hotpink'} borderRadius={25} id = {id}/>) :
                        (<AiOutlineHeart size={24} color={'white'} borderRadius={25} id = {id}/>) }
         </Heart>
-        {/* <Heart>
-          {isStarred ? (<AiFillHeart  onClick = { (e) => clickStar(e) } size={24} color={'hotpink'} borderRadius={25} id = {id}/>) :
-                       (<AiOutlineHeart  onClick = { (e) => clickStar(e) } size={24} color={'white'} borderRadius={25} id = {id}/>) }
-        </Heart> */}
         {listing.isSuperhost === 1 && <SuperhostContainer><SuperhostWriting>SUPERHOST</SuperhostWriting></SuperhostContainer>}
       </ListingImageCont>
       <ListingDetails>
@@ -133,11 +114,11 @@ const Listing = ({ listing, clickStar, starred, id }) => {
           <StarContainer>
             <StarText>⋆</StarText>
           </StarContainer>
-          <div>{listing.avg_rating}</div>
-          <div>({listing.reviews})</div>
+          <div id="avg_rating">{listing.avg_rating}</div>
+          <div id="reviews">({listing.reviews})</div>
         </RatingsContainer>
-        <div>{listing.home_type} • {listing.beds}</div>
-        <div>{listing.name}</div>
+        <div id="home_type_beds">{listing.home_type} • {listing.beds}</div>
+        <div id="name">{listing.name}</div>
         <ListingPrice>${listing.cost_per_night} / night</ListingPrice>
       </ListingDetails>
     </Body>
@@ -145,48 +126,3 @@ const Listing = ({ listing, clickStar, starred, id }) => {
 }
 
 export default Listing;
-
-
-
-
-///////////////////////////////////ORGINAL//////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// const Listing = ({ listing, clickStar, starred }) => {
-//   // console.log('starred = ', starred);
-//   if (starred) {
-//     for (var i = 0; i < starred.length; i++) {
-//       // console.log('listing.id: ', listing.id);
-//       // console.log('starred[' + i + ']', starred[i]);
-//       if ( listing.id.toString() === starred[i] ) {
-//         var isStarred = true;
-//       }
-//     }
-//   }
-//   console.log('isStarred = ', isStarred);
-//   return (
-//     <Body>
-//       <ListingImageCont>
-//         <ListingImage src={listing.img_url} alt={listing.name}></ListingImage>
-//         <Heart>
-//           {isStarred ? (<AiFillHeart  onClick = { (e) => clickStar(e) } size={24} color={'hotpink'} borderRadius={25} id = {listing.id}/>) :
-//                        (<AiOutlineHeart  onClick = { (e) => clickStar(e) } size={24} color={'white'} borderRadius={25} id = {listing.id}/>) }
-//         </Heart>
-//         {listing.isSuperhost === 1 && <SuperhostContainer><SuperhostWriting>SUPERHOST</SuperhostWriting></SuperhostContainer>}
-//       </ListingImageCont>
-//       <ListingDetails>
-//         <RatingsContainer>
-//           <StarContainer>
-//             <StarText>⋆</StarText>
-//           </StarContainer>
-//           <div>{listing.avg_rating}</div>
-//           <div>({listing.reviews})</div>
-//         </RatingsContainer>
-//         <div>{listing.home_type} • {listing.beds}</div>
-//         <div>{listing.name}</div>
-//         <ListingPrice>${listing.cost_per_night} / night</ListingPrice>
-//       </ListingDetails>
-//     </Body>
-//   )
-// }
-
-// export default Listing;

@@ -13,13 +13,12 @@ justify-content: space-between;
 background: white;
 `;
 
-const Listings = ({ listingData, clickStar, starred }) => {
-
+const Listings = ({ listingData, clickStar, starred, firstImg }) => {
   return (
     <Body>
       {
         listingData.map((listing, index) => {
-          return <Listing listing = {listing} clickStar = { clickStar } starred = { starred } id = {index}/>
+          return <Listing listing = {listing} clickStar = { clickStar } starred = { starred } id = {firstImg + index}/>
       })
       }
     </Body>
@@ -27,19 +26,3 @@ const Listings = ({ listingData, clickStar, starred }) => {
 }
 
 export default Listings;
-
-
-
-/////////////////////////
-// console.log('listingData in listings: ', listingData);
-// if (listingData) {
-//   console.log('aloha');
-//   const allListings = listingData.map((listing, index) => {
-//     return <Listing listing = {listing}/>
-//   })
-// } else {
-//   console.log('lollo');
-//   const allListings = dummyData.map((listing, index) => {
-//     return <Listing listing = {listing}/>
-//   })
-// }
