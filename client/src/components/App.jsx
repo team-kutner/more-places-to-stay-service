@@ -9,21 +9,19 @@ import Listing from './Listing.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import listingsService from './listingsService';
+import { Container } from './StyledComponents.jsx';
 
-
-
-
-const Container = styled.div`
-  display: grid;
-  width: 1128px;
-  height: 334px;
-  grid-template-rows: 56px 278px;
-  grid-template-areas: "header"
-                       "listings";
-  background-color: #fff;
-  // border-style: solid;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
-  `;
+// const Container = styled.div`
+//   display: grid;
+//   width: 1128px;
+//   height: 334px;
+//   grid-template-rows: 56px 278px;
+//   grid-template-areas: "header"
+//                        "listings";
+//   background-color: #fff;
+//   // border-style: solid;
+//   font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+//   `;
 
 const App = () => {
   const [name, setName] = useState('tom');
