@@ -13,22 +13,15 @@ justify-content: space-between;
 background: white;
 `;
 
-const ListingGap = styled.div`
-flex: 0 0 20px;
-height: 278px;
-// background-color: red;
-`;
-
-
-const Listings = ({ listingData, clickStar }) => {
-
-  const allListings = listingData.map((listing, index) => {
-      return <Listing listing = {listing} clickStar = { clickStar }/>
-  })
+const Listings = ({ listingData, clickStar, starred }) => {
 
   return (
     <Body>
-      {allListings}
+      {
+        listingData.map((listing, index) => {
+          return <Listing listing = {listing} clickStar = { clickStar } starred = { starred } id = {index}/>
+      })
+      }
     </Body>
   )
 }

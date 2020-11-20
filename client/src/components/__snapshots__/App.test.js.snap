@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`</App> has no props should match snapshot 1`] = `"<div class=\\"sc-fodVxV ljhA-DG\\"></div>"`;
+
+exports[`</App> with no props should match snapshot 1`] = `"<div class=\\"sc-fodVxV ljhA-DG\\"></div>"`;

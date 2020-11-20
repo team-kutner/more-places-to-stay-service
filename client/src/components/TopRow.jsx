@@ -20,12 +20,14 @@ font-size: 22px;
 font-weight: 400;
 `;
 
+Banner.displayName = "Banner";
+
 
 const TopRow = ( { clickRight, clickLeft, pageNum }) => {
 
   return (
     <Header>
-      <Banner>More places to stay</Banner>
+      <Banner id="banner">More places to stay</Banner>
       <ToggleContainer clickLeft = { clickLeft } clickRight = { clickRight } pageNum = { pageNum }/>
     </Header>
   )

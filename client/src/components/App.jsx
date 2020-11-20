@@ -28,20 +28,40 @@ const Container = styled.div`
 
 const App = () => {
   const [name, setName] = useState('tom');
-  const [listingData, setListingData] = useState('');
+  const [listingData, setListingData] = useState([]);
   const [firstImg, setFirstImg] =  useState(0);
   const [lastImg, setLastImg] =  useState(4);
   const [pageNum, setPageNum] = useState(1);
   const [starred, setStarred] = useState([]);
 
-  const clickStar = (e) => {
-    console.log('e.target is: ', e.target);
-    console.log('e.target.id is: ', e.target.id);
-    let newArr = starred.slice();
-    newArr.push(e.target.id);
-    setStarred(newArr);
-    console.log('starred: ', starred);
+  const clickStar = (value, id) => {
+    const newListings = [...listingData];
+    newListings[id].star = value;
+    setListingData(newListings);
   }
+
+
+  // const clickStar = (e) => {
+  //   console.log('e is: ', e);
+  //   console.log('e.target is: ', e.target);
+  //   let newArr = starred.slice();
+  //   // console.log('newArr.indexOf(e.target.id): ', newArr.indexOf(e.target.id));
+  //   // console.log('e.target.id index of: ', newArr.indexOf(e.target.id))
+  //   if (e.target.id) {
+  //     if(newArr.indexOf(e.target.id) === -1) {
+  //       newArr.push(e.target.id);
+  //       setStarred(newArr);
+  //     } else {
+  //       console.log('HI HI HI HI HI HI');
+  //       console.log('1: target id = ', e.target.id);
+  //       console.log('2: item = ', newArr.indexOf(e.target.id));
+  //       newArr.splice((newArr.indexOf(e.target.id)), 1);
+  //       setStarred(newArr);
+  //     }
+  //     console.log('starred: ', starred);
+  //   }
+  // }
+
 
   const clickLeft = () => {
     if (firstImg !== 0) {
@@ -67,23 +87,26 @@ const App = () => {
     }
   };
 
+  const moldListings = (listings) => {
+    const newListings = listings.map(house => { return {...house, star: false}});
+    setListingData(newListings);
+  };
+
   useEffect(() => {
     axios.get('/api/nearbyHomes/city')
-    .then(res => {
-      console.log('axios GET response: ', res.data);
-      setListingData(res.data);
-    })
+    .then(res => res.data)
+    .then(listings => moldListings(listings))
     .catch(err => {
       console.log('error is ', err);
     })
-  }, []);
+  }, listingData, firstImg, name, lastImg, pageNum, starred);
 
 return (
       <Container>
         {listingData.length !== 0 &&
           <>
             <TopRow clickLeft = { clickLeft } clickRight = { clickRight } pageNum = { pageNum }/>
-            <Listings listingData = { listingData.slice(firstImg, lastImg) } clickStar = { clickStar }/>
+            <Listings listingData = { listingData.slice(firstImg, lastImg) } clickStar = { clickStar } starred = { starred } />
           </>
         }
       </Container>
