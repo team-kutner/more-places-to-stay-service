@@ -4,12 +4,23 @@ import App from './App';
 import TopRow from './TopRow';
 import Listing from './Listing';
 import Listings from './Listings';
+import { listingsService } from './__mock__/listingsService';
 
+jest.mock(listingsService);
 
+describe('listingData', () => {
+  const wrapper = Enzyme.shallow(<App />);
+  it('it should contain respective data', () => {
+    setTimeout(() => {
+      wrapper.update();
+      const state = wrapper.instance().state;
+      expect(state.listingData.length).toBeGreaterThan(1);
+      console.log(state);
+    });
+  });
+});
 
-
-
-describe('First React component test with Enzyme', () => {
+describe('Check that App loads properly', () => {
   it('renders without crashing', () => {
      Enzyme.shallow(<App />);
    });
@@ -30,9 +41,11 @@ describe('<TopRow /> has correct text', () => {
    });
 });
 
+
 describe('<Listing /> has correct text', () => {
   it('avg_rating to be defined', () => {
     const wrapper = Enzyme.shallow(<Listing />);
+
     const text = wrapper.find('#avg_rating');
     expect(text.text()).toBeDefined();
    });

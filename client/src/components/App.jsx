@@ -10,6 +10,7 @@ import Listing from './Listing.jsx';
 import dummyData from '../dummydata.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import listingsService from './listingsService';
 
 
 
@@ -69,13 +70,10 @@ const App = () => {
     setListingData(newListings);
   };
 
-  useEffect(() => {
-    axios.get('/api/nearbyHomes/city')
-    .then(res => res.data)
-    .then(listings => moldListings(listings))
-    .catch(err => {
-      console.log('error is ', err);
-    })
+  useEffect(async () => {
+    const listings = await listingsService();
+    console.log(listings);
+    moldListings(listings);
   }, listingData, firstImg, name, lastImg, pageNum, starred);
 
 return (
