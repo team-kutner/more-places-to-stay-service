@@ -15,12 +15,16 @@ app.get('/api/nearbyHomes', (req, res) => {
   })
 })
 
-app.get('/api/nearbyHomes/city', (req, res) => {
-  let city = 'pescadero';
-  router.getCityHomesFromDB(city, (err, result) => {
+app.get('/api/nearbyHomes/:id', (req, res) => {
+  const ID = Number(req.params.id);
+  router.getNearbyFromID(ID, (err, result) => {
     if (err) throw err;
-    res.send(result);
+    router.getCityHomesFromDB(result[0].city, ID, (err, results) => {
+          if (err) throw err;
+          res.send(results);
+    })
   })
 })
+
 
 module.exports = app;
