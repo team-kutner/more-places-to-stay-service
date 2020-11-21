@@ -9,9 +9,14 @@
   "scripts": {
     "build": "webpack -d --watch",
     "start": "nodemon server/server.js",
-    "seed": "node database/seeding/seeds.js"
+    "seed": "node database/seeding/seeds.js",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.12",
     "axios": "^0.21.0",
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
@@ -21,6 +26,8 @@
     "mysql2": "^2.2.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-icons": "^3.11.0",
+    "styled-components": "^5.2.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0"
   },
@@ -29,10 +36,16 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "babel-loader": "^8.2.1",
+    "babel-plugin-styled-components": "^1.11.1",
+    "babel-polyfill": "^6.26.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
     "eslint": "^7.13.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "eslint-plugin-react": "^7.21.5",
-    "nodemon": "^2.0.6"
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "supertest": "^6.0.1"
   },
   "version": "1.0.0",
   "main": ".eslintrc.js",

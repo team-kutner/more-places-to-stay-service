@@ -1,17 +1,18 @@
 const dbConnection = require('./dbConnection');
 
-var getAllHomesFromDB = (callback) => {
-  var queryStr = 'SELECT * FROM homes';
+const getCityHomesFromDB = (city, ID, callback) => {
+  let queryStr = `SELECT * FROM homes WHERE (city = '${city}' AND ID != '${ID
+  }') LIMIT 12`;
   dbConnection.query(queryStr, callback);
-};
+}
 
-var getCityHomesFromDB = (city, callback) => {
-  var queryStr = `SELECT * FROM homes WHERE city = '${city}' LIMIT 12`;
+const getNearbyFromID = (ID, callback) => {
+  let queryStr = `SELECT city FROM homes WHERE id = '${ID}'`;
   dbConnection.query(queryStr, callback);
 }
 
 module.exports = {
-  getAllHomesFromDB,
-  getCityHomesFromDB
+  getCityHomesFromDB,
+  getNearbyFromID
 }
 
