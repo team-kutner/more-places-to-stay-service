@@ -55,7 +55,12 @@ const App = () => {
   };
 
   useEffect(async () => {
-    const listings = await listingsService();
+    let url = window.location.href;
+    console.log('url: ', url);
+    let id = url.split('/')[url.split('/').length - 1] || 59;
+    console.log('id: ', id);
+    let num = url
+    const listings = await listingsService(id);
     console.log(listings);
     moldListings(listings);
   }, listingData, firstImg, name, lastImg, pageNum, starred);
