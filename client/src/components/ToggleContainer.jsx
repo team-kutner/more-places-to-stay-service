@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+// import React, { useState, useEffect } from 'react';
+// import ReactDOM from 'react-dom';
+// import styled from 'styled-components';
+const { React } = window;
+const { useState, useEffect } = React;
+const { styled } = global;
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Toggle, Circle, PageNumberContainer, PageNumberDigit, Arrow } from './StyledComponents.jsx';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';

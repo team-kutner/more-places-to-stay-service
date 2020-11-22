@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import styled from 'styled-components'
+// import React, { useState, useEffect } from 'react';
+const { React } = window;
+const { useState, useEffect } = React;
+const { styled } = global;
+// import ReactDOM from 'react-dom';
+// import styled from 'styled-components'
 import axios from 'axios';
 import TopRow from './TopRow.jsx';
 import ToggleContainer from './ToggleContainer.jsx';
@@ -54,16 +57,15 @@ const App = () => {
     setListingData(newListings);
   };
 
-  useEffect(async () => {
-    let url = window.location.href;
-    console.log('url: ', url);
-    let id = url.split('/')[url.split('/').length - 1] || 59;
-    console.log('id: ', id);
-    let num = url
-    const listings = await listingsService(id);
-    console.log(listings);
-    moldListings(listings);
-  }, listingData, firstImg, name, lastImg, pageNum, starred);
+  useEffect(() => {
+    (async () => {
+      let url = window.location.href;
+      let id = url.split('/')[url.split('/').length - 1] || 59;
+      const listings = await listingsService(id);
+      console.log(listings);
+      moldListings(listings);
+    })()
+  }, []);
 
 return (
       <Container>
