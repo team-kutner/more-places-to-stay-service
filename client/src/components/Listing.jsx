@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+// import React, { useState, useEffect } from 'react';
+// import ReactDOM from 'react-dom';
+// import styled from 'styled-components';
+const { React } = window;
+const { useState, useEffect } = React;
+const { styled } = global;
 import { ListingBody, ListingImageCont, ListingImage, Heart, HeartTwo, SuperhostContainer, SuperhostWriting, ListingDetails, RatingsContainer, ListingPrice, StarContainer, StarText } from './StyledComponents.jsx';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 

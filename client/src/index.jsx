@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+// import React, { useState, useEffect } from 'react';
+// import ReactDOM from 'react-dom';
+
+const {React} = window
+const {ReactDOM} = window
+
 import App from './components/App.jsx';
 import 'babel-polyfill';
 
-// ReactDOM.render(<App />, document.getElementById('app'));
-window.React = React;
-window.ReactDOM = ReactDOM;
-window.NearbyHomesApp = App;
+ReactDOM.render(<App />, document.getElementById('NearbyApp'));
+// window.React = React;
+// window.ReactDOMnearby = ReactDOM;
+// window.NearbyHomesApp = App;
