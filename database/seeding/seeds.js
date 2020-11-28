@@ -15,8 +15,8 @@ const cities = ['menlo park', 'palo alto', 'la honda', 'san carlos', 'pescadero'
 const createFakeListing = (() => {
   return [
     faker.name.findName() + ' AirBnB',
-    imgUrls[getRandomInt(img_urls)],
-    homeTypes[getRandomInt(home_types)],
+    imgUrls[getRandomInt(imgUrls)],
+    homeTypes[getRandomInt(homeTypes)],
     faker.random.number({
       'min': 1,
       'max': 12
