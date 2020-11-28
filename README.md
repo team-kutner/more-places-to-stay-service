@@ -21,15 +21,16 @@
 ```sh
 npm install
 ```
-3. From within root directory, create and seed database:
+3. Go to: /database/config.js file and change the 'user' and 'password' to current MySql configuration on local.
+4. From within root directory, create and seed database:
 ```sh
 npm run seed
 ```
-4. From within root directory, build webpack:
+5. From within root directory, build webpack:
 ```sh
 npm run build
 ```
-5. From within root directory, run server:
+6. From within root directory, run server:
 ```sh
 npm run start
 ```

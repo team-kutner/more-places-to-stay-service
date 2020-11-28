@@ -13,7 +13,7 @@ const ToggleContainer = ({ clickRight, clickLeft, pageNum }) => {
       <PageNumberContainer>
         <PageNumberDigit>{ pageNum }/3</PageNumberDigit>
       </PageNumberContainer>
-      <Circle onClick = { () => clickLeft() }  >
+      <Circle onClick = { () => clickLeft() } >
         <Arrow><MdKeyboardArrowLeft size = { 24 }/></Arrow>
       </Circle>
       <Circle onClick = { () => clickRight() }>

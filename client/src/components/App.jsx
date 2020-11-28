@@ -58,7 +58,6 @@ const App = () => {
       let url = window.location.href;
       let id = url.split('/')[url.split('/').length - 1] || 59;
       const listings = await listingsService(id);
-      console.log(listings);
       moldListings(listings);
     })()
   }, []);
