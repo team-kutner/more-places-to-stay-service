@@ -1,4 +1,4 @@
-import Enzyme from '../../../Enzyme.js'
+import Enzyme from '../../../Enzyme.js';
 import React from 'react';
 import App from './App';
 import TopRow from './TopRow';
@@ -22,15 +22,15 @@ describe('listingData', () => {
 
 describe('Check that App loads properly', () => {
   it('renders without crashing', () => {
-     Enzyme.shallow(<App />);
-   });
+    Enzyme.shallow(<App />);
+  });
 });
 
 describe('</App> has no props', () => {
   const container = Enzyme.shallow(<App />);
   it('should match snapshot', () => {
-     expect(container.html()).toMatchSnapshot();
-   });
+    expect(container.html()).toMatchSnapshot();
+  });
 });
 
 describe('<TopRow /> has correct text', () => {
@@ -38,7 +38,7 @@ describe('<TopRow /> has correct text', () => {
     const wrapper = Enzyme.shallow(<TopRow />);
     const text = wrapper.find('Banner');
     expect(text.text()).toBe('More places to stay');
-   });
+  });
 });
 
 
@@ -48,20 +48,20 @@ describe('<Listing /> has correct text', () => {
 
     const text = wrapper.find('#avg_rating');
     expect(text.text()).toBeDefined();
-   });
-   it('reviews to be defined', () => {
+  });
+  it('reviews to be defined', () => {
     const wrapper = Enzyme.shallow(<Listing />);
     const text = wrapper.find('#reviews');
     expect(text.text()).toBeDefined();
-   });
-   it('home_type_beds to be defined', () => {
+  });
+  it('home_type_beds to be defined', () => {
     const wrapper = Enzyme.shallow(<Listing />);
     const text = wrapper.find('#home_type_beds');
     expect(text.text()).toBeDefined();
-   });
-   it('name', () => {
+  });
+  it('name', () => {
     const wrapper = Enzyme.shallow(<Listing />);
     const text = wrapper.find('#name');
     expect(text.text()).toBeDefined();
-   });
+  });
 });

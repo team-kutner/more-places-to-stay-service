@@ -1,6 +1,6 @@
 # Project Name
 
-> Project description
+> Nearby homes and more places to stay module
 
 ## Related Projects
 
@@ -16,14 +16,31 @@
 
 ## Usage
 
-> Some usage instructions
+1.  Install Node and MySql
+2.  From within root directory, install dependencies:
+```sh
+npm install
+```
+3. Go to: /database/config.js file and change the 'user' and 'password' to current MySql configuration on local.
+4. From within root directory, create and seed database:
+```sh
+npm run seed
+```
+5. From within root directory, build webpack:
+```sh
+npm run build
+```
+6. From within root directory, run server:
+```sh
+npm run start
+```
 
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-- Node 6.13.0
--
+- MySQL
+- Node
 
 ## Development
 
@@ -32,17 +49,9 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install --save-dev webpack@4
-npm install --save-dev webpack-cli
-npm install -D babel-loader
-npm install -D @babel/core
-npm install @babel/preset-env
-npm install --save-dev nodemon
-npm install --save-dev @babel/preset-react
-npm install express --save
-npm install body-parser
-npm install --save mysql2
-npm install axios
-
+npm install
+npm run seed
+npm run build
+npm run start
 ```
 

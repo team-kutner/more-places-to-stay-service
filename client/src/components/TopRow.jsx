@@ -1,6 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import ReactDOM from 'react-dom';
-// import styled from 'styled-components';
 const { React } = window;
 const { useState, useEffect } = React;
 const { styled } = global;
@@ -9,7 +6,7 @@ import ToggleContainer from './ToggleContainer.jsx';
 import { AiOutlineHeart } from 'react-icons/ai';
 
 
-Banner.displayName = "Banner";
+Banner.displayName = 'Banner';
 
 
 const TopRow = ( { clickRight, clickLeft, pageNum }) => {
@@ -19,7 +16,7 @@ const TopRow = ( { clickRight, clickLeft, pageNum }) => {
       <Banner id="banner">More places to stay</Banner>
       <ToggleContainer clickLeft = { clickLeft } clickRight = { clickRight } pageNum = { pageNum }/>
     </Header>
-  )
-}
+  );
+};
 
 export default TopRow;

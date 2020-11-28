@@ -16,11 +16,11 @@ app.get('/api/homes/:id/nearbyHomes', (req, res) => {
       res.send('error occurred');
     }
     router.getCityHomesFromDB(result[0].city, ID, (err, results) => {
-          if (err) throw err;
-          res.send(results);
-    })
-  })
-})
+      if (err) { throw err; }
+      res.send(results);
+    });
+  });
+});
 
 
 module.exports = app;

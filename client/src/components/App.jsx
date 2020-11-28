@@ -1,16 +1,12 @@
-// import React, { useState, useEffect } from 'react';
 const { React } = window;
 const { useState, useEffect } = React;
 const { styled } = global;
-// import ReactDOM from 'react-dom';
-// import styled from 'styled-components'
+
 import axios from 'axios';
 import TopRow from './TopRow.jsx';
 import ToggleContainer from './ToggleContainer.jsx';
 import Listings from './Listings.jsx';
 import Listing from './Listing.jsx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import listingsService from './listingsService';
 import { Container } from './StyledComponents.jsx';
 
@@ -53,7 +49,7 @@ const App = () => {
   };
 
   const moldListings = (listings) => {
-    const newListings = listings.map(house => { return {...house, star: false}});
+    const newListings = listings.map(house => { return { ...house, star: false } } );
     setListingData(newListings);
   };
 
@@ -62,7 +58,6 @@ const App = () => {
       let url = window.location.href;
       let id = url.split('/')[url.split('/').length - 1] || 59;
       const listings = await listingsService(id);
-      console.log(listings);
       moldListings(listings);
     })()
   }, []);
