@@ -1,9 +1,7 @@
-DROP DATABASE IF EXISTS nearbyHomes;
-CREATE DATABASE nearbyHomes;
+DROP SCHEMA IF EXISTS nearbyHomes CASCADE;
+CREATE SCHEMA nearbyHomes;
 
-USE nearbyHomes;
-
-CREATE TABLE homes (
+CREATE TABLE nearbyHomes.homes (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(250),
   img_url TEXT,
@@ -19,7 +17,7 @@ CREATE TABLE homes (
 
 /*
 Execute by running in mysql shell:
-source /Users/mitchmcdermott/Desktop/SDC/more-places-to-stay-service/schema.sql
+source /Users/mitchmcdermott/Desktop/SDC/more-places-to-stay-service/database/schemas/postgresSchema.sql
 
 Drop database by running in mysql shell:
 DROP DATABASE nearbyHomes;

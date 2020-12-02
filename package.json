@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "webpack -d --watch",
     "build": "webpack",
-    "mysql" : "mysql -u root -p -h127.0.0.1",
+    "mysql": "mysql -u root -p -h127.0.0.1",
     "start": "nodemon server/server.js",
     "seed": "node database/seeding/seeds.js",
     "test": "jest",
@@ -23,6 +23,7 @@
     "faker": "^5.1.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
+    "postgres": "^1.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^3.11.0",
