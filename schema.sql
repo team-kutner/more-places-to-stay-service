@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS nearbyHomes;
 CREATE DATABASE nearbyHomes;
 
 USE nearbyHomes;
@@ -18,7 +19,7 @@ CREATE TABLE homes (
 
 /*
 Execute by running in mysql shell:
-source /Users/jandy/Work/fec/aquabnb-more-places-to-stay/schema.sql
+source /Users/mitchmcdermott/Desktop/SDC/more-places-to-stay-service/schema.sql
 
 Drop database by running in mysql shell:
 DROP DATABASE nearbyHomes;

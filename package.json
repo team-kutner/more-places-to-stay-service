@@ -9,8 +9,9 @@
   "scripts": {
     "dev": "webpack -d --watch",
     "build": "webpack",
+    "mysql" : "mysql -u root -p -h127.0.0.1",
     "start": "nodemon server/server.js",
-    "seed": "mysql -u root -p < schema.sql && node database/seeding/seeds.js",
+    "seed": "node database/seeding/seeds.js",
     "test": "jest",
     "test:watch": "jest --watchAll"
   },

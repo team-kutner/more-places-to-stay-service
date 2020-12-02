@@ -55,3 +55,15 @@ npm run build
 npm run start
 ```
 
+
+
+CRUD API
+The below URL's should be prefixed with /api/homes/:id
+
+|          Action           |Method|       URL        |
+| ------------------------- | ---- | ---------------- |
+|Create a new nearby home   |POST  |/nearbyHomes      |
+|Get hearby home(s) listings|GET   |/nearbyHomes      |
+|Update description of home |UPDATE|/updateDescription|
+|Delete a nearby home       |DELETE|/nearbyHomes      |
+
