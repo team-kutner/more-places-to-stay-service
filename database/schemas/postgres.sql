@@ -1,10 +1,9 @@
 DROP DATABASE IF EXISTS homesservice;
 CREATE DATABASE homesservice;
 
-DROP SCHEMA IF EXISTS nearbyHomes CASCADE;
-CREATE SCHEMA nearbyHomes;
+\c homesservice;
 
-CREATE TABLE nearbyHomes.homes (
+CREATE TABLE homes (
   id SERIAL PRIMARY KEY,
   name VARCHAR(250),
   img_url TEXT,
