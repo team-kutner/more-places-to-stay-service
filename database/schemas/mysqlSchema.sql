@@ -19,7 +19,7 @@ CREATE TABLE homes (
 
 /*
 Execute by running in mysql shell:
-source /Users/mitchmcdermott/Desktop/SDC/more-places-to-stay-service/database/schemas/mysqlschema.sql
+source /Users/mitchmcdermott/Desktop/SDC/more-places-to-stay-service/database/schemas/mysqlSchema.sql
 
 Drop database by running in mysql shell:
 DROP DATABASE nearbyHomes;

@@ -1,8 +1,11 @@
+DROP DATABASE IF EXISTS homesservice;
+CREATE DATABASE homesservice;
+
 DROP SCHEMA IF EXISTS nearbyHomes CASCADE;
 CREATE SCHEMA nearbyHomes;
 
 CREATE TABLE nearbyHomes.homes (
-  id INT AUTO_INCREMENT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(250),
   img_url TEXT,
   home_type VARCHAR(250),
@@ -11,15 +14,6 @@ CREATE TABLE nearbyHomes.homes (
   city VARCHAR(250),
   cost_per_night INT,
   reviews INT,
-  avg_rating FLOAT(3, 2),
+  avg_rating NUMERIC(3, 2),
   isSuperhost BOOLEAN
 );
-
-/*
-Execute by running in mysql shell:
-source /Users/mitchmcdermott/Desktop/SDC/more-places-to-stay-service/database/schemas/postgresSchema.sql
-
-Drop database by running in mysql shell:
-DROP DATABASE nearbyHomes;
-
-*/
