@@ -1,22 +1,23 @@
-DROP KEYSPACE IF EXISTS nearbyHomes;
-CREATE KEYSPACE nearbyHomes
+CREATE KEYSPACE IF NOT EXISTS homes
   WITH REPLICATION = {
     'class' : 'SimpleStrategy',
     'replication_factor' : 1
   };
 
-USE nearbyHomes;
+USE homes;
 
-CREATE TABLE homes (
-  name VARCHAR(250),
+
+CREATE TABLE IF NOT EXISTS homes (
+  id INT PRIMARY KEY,
+  name VARCHAR,
   img_url TEXT,
-  home_type VARCHAR(250),
+  home_type VARCHAR,
   beds INT,
   description TEXT,
-  city VARCHAR(250),
+  city VARCHAR,
   cost_per_night INT,
   reviews INT,
-  avg_rating FLOAT(3, 2),
+  avg_rating DECIMAL,
   isSuperhost BOOLEAN
 );
 
