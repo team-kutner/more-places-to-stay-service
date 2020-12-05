@@ -11,10 +11,11 @@
     "build": "webpack",
     "mysql": "mysql -u root -p -h127.0.0.1",
     "start": "nodemon server/server.js",
-    "seed": "node database/seeding/mysqlseeder.js",
+    "mysql_seed": "node database/seeding/mysqlseeder.js",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "cassyCSV": "node database/cassandra/cassyCSV.js"
+    "csv": "node database/CSV/CSVgenerator.js",
+    "postgres_seed": "database/seeding/postgres/postgresSeeder.js"
   },
   "dependencies": {
     "axios": "^0.21.0",
