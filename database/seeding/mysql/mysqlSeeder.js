@@ -1,6 +1,6 @@
 const faker = require('faker');
-const s3HostedImgs = require('../seeding/imageSeeds.js');
-const fs = require('fs');
+const s3HostedImgs = require('./imageSeeds.js');
+const dbConnection = require('../../dbConnection.js');
 
 
 const getRandomInt = (itemList) => {
@@ -41,34 +41,17 @@ const createFakeListing = (() => {
 
 const createFakeListings = (() => {
   let fakeListings = [];
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 100; i++) {
     fakeListings.push(createFakeListing());
   }
   return fakeListings;
 });
 
 let fakeListings = createFakeListings();
+let sql = 'INSERT INTO homes (name, img_url, home_type, beds, description, city, cost_per_night, reviews, avg_rating, isSuperhost) VALUES ?';
+dbConnection.query(sql, [fakeListings], (err) => {
+  if (err) { throw err; }
+  dbConnection.end();
+});
 
-const createHomesHeader = () => {
-  const homesStream = fs.createWriteStream(__dirname + '/cassyHomes.csv');
-  homesStream.write('name,img_url,home_type,beds,description,city,cost_per_night,reviews,avg_rating,isSuperhost\n');
-};
-
-const addHomesToCSV = () => {
-  const homesStream = fs.createWriteStream(__dirname + '/cassyHomes.csv', {flags: 'a'});
-  for (let i = 0; i < fakeListings.length; i++) {
-    const fl = fakeListings[i];
-    homesStream.write(`${fl[0]},${fl[1]}${fl[2]},${fl[3]},${fl[4]},${fl[5]},${fl[6]},${fl[7]},${fl[8]},${fl[9]}\n`);
-  }
-};
-
-createHomesHeader();
-
-const createCassyCSV = () => {
-  for (let i = 0; i < 10; i++) {
-    addHomesToCSV();
-  }
-  console.log('Cassy CSV created successfully');
-};
-
-createCassyCSV();
+module.exports = createFakeListings;

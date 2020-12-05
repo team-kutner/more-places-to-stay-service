@@ -1,7 +1,5 @@
 const faker = require('faker');
-const s3HostedImgs = require('./imageSeeds.js');
-const dbConnection = require('../dbConnection.js');
-
+const fs = require('fs');
 
 const getRandomInt = (itemList) => {
   let max = itemList.length;
@@ -9,13 +7,12 @@ const getRandomInt = (itemList) => {
 };
 
 const homeTypes = ['home', 'hotel', 'cabin', 'apartment', 'mansion', 'igloo', 'hut'];
-const imgUrls = s3HostedImgs;
 const cities = ['menlo park', 'palo alto', 'la honda', 'san carlos', 'pescadero', 'half moon bay'];
 
 const createFakeListing = (() => {
   return [
     faker.name.findName() + ' AirBnB',
-    imgUrls[getRandomInt(imgUrls)],
+    faker.image.imageUrl(),
     homeTypes[getRandomInt(homeTypes)],
     faker.random.number({
       'min': 1,
@@ -41,17 +38,36 @@ const createFakeListing = (() => {
 
 const createFakeListings = (() => {
   let fakeListings = [];
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 10000; i++) {
     fakeListings.push(createFakeListing());
   }
   return fakeListings;
 });
 
 let fakeListings = createFakeListings();
-let sql = 'INSERT INTO homes (name, img_url, home_type, beds, description, city, cost_per_night, reviews, avg_rating, isSuperhost) VALUES ?';
-dbConnection.query(sql, [fakeListings], (err) => {
-  if (err) { throw err; }
-  dbConnection.end();
-});
 
-module.exports = createFakeListings;
+const createHomesHeader = () => {
+  const homesStream = fs.createWriteStream(__dirname + '/cassyHomes.csv');
+  homesStream.write('name,img_url,home_type,beds,description,city,cost_per_night,reviews,avg_rating,isSuperhost\n');
+};
+
+const addHomesToCSV = () => {
+  const homesStream = fs.createWriteStream(__dirname + '/cassyHomes.csv', {flags: 'a'});
+  for (let i = 0; i < fakeListings.length; i++) {
+    const fl = fakeListings[i];
+    homesStream.write(`${fl[0]},${fl[1]}${fl[2]},${fl[3]},${fl[4]},${fl[5]},${fl[6]},${fl[7]},${fl[8]},${fl[9]}\n`);
+  }
+};
+
+createHomesHeader();
+
+const createCSV = () => {
+  console.time();
+  for (let i = 0; i < 1000; i++) {
+    addHomesToCSV();
+  }
+  console.timeEnd();
+  console.log('Cassy CSV created successfully');
+};
+
+createCSV();
