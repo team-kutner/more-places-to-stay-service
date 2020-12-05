@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const router = require('../database/router.js');
+const router = require('../mysql/database/router.js');
 
 
 app.use(express.static(__dirname + '/../dist'));
