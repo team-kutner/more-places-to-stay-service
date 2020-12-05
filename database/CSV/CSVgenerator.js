@@ -1,7 +1,5 @@
 const faker = require('faker');
-const s3HostedImgs = require('../seeding/imageSeeds.js');
 const fs = require('fs');
-
 
 const getRandomInt = (itemList) => {
   let max = itemList.length;
@@ -9,13 +7,12 @@ const getRandomInt = (itemList) => {
 };
 
 const homeTypes = ['home', 'hotel', 'cabin', 'apartment', 'mansion', 'igloo', 'hut'];
-const imgUrls = s3HostedImgs;
 const cities = ['menlo park', 'palo alto', 'la honda', 'san carlos', 'pescadero', 'half moon bay'];
 
 const createFakeListing = (() => {
   return [
     faker.name.findName() + ' AirBnB',
-    imgUrls[getRandomInt(imgUrls)],
+    faker.image.imageUrl(),
     homeTypes[getRandomInt(homeTypes)],
     faker.random.number({
       'min': 1,
@@ -41,7 +38,7 @@ const createFakeListing = (() => {
 
 const createFakeListings = (() => {
   let fakeListings = [];
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 10000; i++) {
     fakeListings.push(createFakeListing());
   }
   return fakeListings;
@@ -64,11 +61,13 @@ const addHomesToCSV = () => {
 
 createHomesHeader();
 
-const createCassyCSV = () => {
-  for (let i = 0; i < 10; i++) {
+const createCSV = () => {
+  console.time();
+  for (let i = 0; i < 1000; i++) {
     addHomesToCSV();
   }
+  console.timeEnd();
   console.log('Cassy CSV created successfully');
 };
 
-createCassyCSV();
+createCSV();
