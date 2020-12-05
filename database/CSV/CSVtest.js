@@ -38,8 +38,9 @@ const createFakeListing = (() => {
 
 const createFakeListings = (() => {
   let fakeListings = [];
-  for (var i = 0; i < 10000; i++) {
-    fakeListings.push(createFakeListing());
+  for (var i = 0; i < 10; i++) {
+    const listing = createFakeListing();
+    fakeListings.push(listing);
   }
   return fakeListings;
 });
@@ -47,15 +48,15 @@ const createFakeListings = (() => {
 let fakeListings = createFakeListings();
 
 const createHomesHeader = () => {
-  const homesStream = fs.createWriteStream(__dirname + '/CSVdata.csv');
+  const homesStream = fs.createWriteStream(__dirname + '/CSVtest.csv');
   homesStream.write('name,img_url,home_type,beds,description,city,cost_per_night,reviews,avg_rating,isSuperhost\n');
 };
 
 const addHomesToCSV = () => {
-  const homesStream = fs.createWriteStream(__dirname + '/CSVdata.csv', {flags: 'a'});
+  const homesStream = fs.createWriteStream(__dirname + '/CSVtest.csv', {flags: 'a'});
   for (let i = 0; i < fakeListings.length; i++) {
     const fl = fakeListings[i];
-    homesStream.write(`${fl[0]} | ${fl[1]} | ${fl[2]} | ${fl[3]} | ${fl[4]} | ${fl[5]} | ${fl[6]} | ${fl[7]} | ${fl[8]} | ${fl[9]}\n`);
+    homesStream.write(`${fl[0]},${fl[1]},${fl[2]},${fl[3]},${fl[4]},${fl[5]},${fl[6]},${fl[7]},${fl[8]},${fl[9]}\n`);
   }
 };
 
@@ -63,11 +64,11 @@ createHomesHeader();
 
 const createCSV = () => {
   console.time();
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < 10; i++) {
     addHomesToCSV();
   }
   console.timeEnd();
-  console.log('CSV created successfully');
+  console.log('CSV test file created successfully');
 };
 
 createCSV();

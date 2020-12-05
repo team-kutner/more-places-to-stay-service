@@ -15,7 +15,8 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "csv": "node database/CSV/CSVgenerator.js",
-    "postgres_seed": "database/seeding/postgres/postgresSeeder.js"
+    "csvtest": "node database/CSV/CSVtest.js",
+    "postgres_seed": "node database/seeding/postgres/postgresSeeder.js"
   },
   "dependencies": {
     "axios": "^0.21.0",
