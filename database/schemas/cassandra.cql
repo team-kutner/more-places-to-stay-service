@@ -1,7 +1,8 @@
+DROP KEYSPACE IF EXISTS homes;
 CREATE KEYSPACE IF NOT EXISTS homes
   WITH REPLICATION = {
-    'class' : 'SimpleStrategy',
-    'replication_factor' : 1
+    'class' : 'NetworkTopologyStrategy',
+    'datacenter1' : 1
   };
 
 USE homes;
