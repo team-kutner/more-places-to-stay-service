@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const router = require('../database/seeding/mysql/router.js');
+// const router = require('../database/seeding/mysql/router.js');
+const router = require('../database/seeding/postgres/router.js');
 
 
 app.use(express.static(__dirname + '/../dist'));
@@ -18,7 +19,7 @@ app.get('/api/homes/:id/nearbyHomes', (req, res) => {
       res.status(200);
       console.log('get home by id successful');
     }
-    router.getCityHomesFromDB(result[0].city, ID, (err, results) => {
+    router.getCityHomesFromDB(result.rows[0].city, ID, (err, results) => {
       if (err) {
         console.error('get all homes failed: ', err);
         res.status(400);
@@ -34,10 +35,12 @@ app.get('/api/homes/:id/nearbyHomes', (req, res) => {
 
 app.post('/api/homes/:id/nearbyHomes', (req, res) => {
   const newHome = req.body;
+  console.log(newHome);
   router.postNearbyHome(newHome, (err, result) => {
     if (err) {
       res.status(400);
       console.error('post request failed: ', err);
+      throw err;
     } else {
       console.log('post successful');
       res.status(200);
@@ -46,7 +49,7 @@ app.post('/api/homes/:id/nearbyHomes', (req, res) => {
   });
 });
 
-app.post('/api/homes/:id/updateDescription', (req, res) => {
+app.put('/api/homes/:id/nearbyHomes', (req, res) => {
   const id = req.url.split('/')[3];
   const description = req.body.description;
   router.updateDescription(description, id, (err, result) => {
@@ -77,3 +80,30 @@ app.delete('/api/homes/:id/nearbyHomes', (req, res) => {
 
 
 module.exports = app;
+
+
+// {
+//   name: 'SLC Paradise AirBnB',
+//   img_url: 'http://placeimg.com/840/490',
+//   home_type: 'palace',
+//   beds: 23,
+//   description: 'moist mountains miraculously magnifiying my magical meat',
+//   city: 'salt lake city',
+//   cost_per_night: 59,
+//   reviews: 284,
+//   avg_rating: 4.79,
+//   isSuperhost: false
+// }
+// [
+//   'SLC Paradise AirBnB',
+//   'http://placeimg.com/840/490',
+//   'palace',
+//   23,
+//   'moist mountains miraculously magnifiying my magical meat',
+//   'salt lake city',
+//   59,
+//   284,
+//   4.79,
+//   false
+// ]
+

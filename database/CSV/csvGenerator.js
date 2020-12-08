@@ -15,7 +15,7 @@ const deleteFileIfExists = (dest) => {
   }
 };
 
-const csvFile = path.join(__dirname, 'cassyCSVdata.csv');
+const csvFile = path.join(__dirname, 'csvData.csv');
 deleteFileIfExists(csvFile);
 
 const getRandomInt = (itemList) => {
@@ -56,7 +56,7 @@ const createFakeListing = ((id) => {
 
 let index = 0;
 let counter = 1000000;
-const homesStream = fs.createWriteStream(__dirname + '/cassyCSVdata.csv', {flags: 'a'});
+const homesStream = fs.createWriteStream(__dirname + '/csvData.csv', {flags: 'a'});
 
 const createFakeListings = ((id) => {
   let fakeListings = [];
@@ -87,8 +87,16 @@ const createCSV = () => {
     addHomesToCSV();
   }
   console.timeEnd();
-  console.log('Cassandra CSV file created successfully');
+  console.log('CSV file created successfully');
 };
 
 createHomesHeader();
 createCSV();
+
+
+
+////////////////////////////////////////////////////
+
+// Use 'npm run csv_generator' to create CSV file
+
+////////////////////////////////////////////////////
