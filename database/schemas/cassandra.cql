@@ -1,15 +1,14 @@
-DROP KEYSPACE IF EXISTS homes;
-CREATE KEYSPACE IF NOT EXISTS homes
+DROP KEYSPACE IF EXISTS homesservice;
+CREATE KEYSPACE IF NOT EXISTS homesservice
   WITH REPLICATION = {
     'class' : 'NetworkTopologyStrategy',
     'datacenter1' : 1
   };
 
-USE homes;
-
+USE homesservice;
 
 CREATE TABLE IF NOT EXISTS homes (
-  id INT PRIMARY KEY,
+  homeID INT PRIMARY KEY,
   name VARCHAR,
   img_url TEXT,
   home_type VARCHAR,

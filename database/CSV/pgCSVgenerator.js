@@ -59,15 +59,14 @@ const addHomesToCSV = () => {
   }
 };
 
-createHomesHeader();
-
 const createCSV = () => {
   console.time();
   for (let i = 0; i < 1000; i++) {
     addHomesToCSV();
   }
   console.timeEnd();
-  console.log('CSV created successfully');
+  console.log('PostGres CSV created successfully');
 };
 
+createHomesHeader();
 createCSV();

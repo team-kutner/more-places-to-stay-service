@@ -1,4 +1,4 @@
-const pool = require('./connection.js').pool;
+const pool = require('./config.js').pool;
 
 pool.query(`
   COPY homes (name, img_url, home_type, beds, description, city, cost_per_night, reviews, avg_rating, isSuperhost)

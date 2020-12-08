@@ -14,9 +14,12 @@
     "mysql_seed": "node database/seeding/mysqlseeder.js",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "csv": "node database/CSV/CSVgenerator.js",
+    "csvPG": "node database/CSV/pgCSVgenerator.js",
+    "csvCassy": "node database/CSV/cassyCSVgenerator.js",
     "csvtest": "node database/CSV/CSVtest.js",
-    "postgres_seed": "node database/seeding/postgres/postgresSeeder.js"
+    "postgres_seed": "node database/seeding/postgres/postgresSeeder.js",
+    "cassy_seed": "node database/seeding/cassandra/cassySeeder.js",
+    "load": "node --max-old-space-size=8192 database/CSV/CSVcassyGenerator.js"
   },
   "dependencies": {
     "axios": "^0.21.0",
