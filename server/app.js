@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const router = require('../database/seeding/mysql/router.js');
+// const router = require('../database/seeding/mysql/router.js');
+const router = require('../database/seeding/postgres/router.js');
 
 
 app.use(express.static(__dirname + '/../dist'));
@@ -18,7 +19,7 @@ app.get('/api/homes/:id/nearbyHomes', (req, res) => {
       res.status(200);
       console.log('get home by id successful');
     }
-    router.getCityHomesFromDB(result[0].city, ID, (err, results) => {
+    router.getCityHomesFromDB(result.rows[0].city, ID, (err, results) => {
       if (err) {
         console.error('get all homes failed: ', err);
         res.status(400);
@@ -38,6 +39,7 @@ app.post('/api/homes/:id/nearbyHomes', (req, res) => {
     if (err) {
       res.status(400);
       console.error('post request failed: ', err);
+      throw err;
     } else {
       console.log('post successful');
       res.status(200);
@@ -46,7 +48,7 @@ app.post('/api/homes/:id/nearbyHomes', (req, res) => {
   });
 });
 
-app.post('/api/homes/:id/updateDescription', (req, res) => {
+app.put('/api/homes/:id/nearbyHomes', (req, res) => {
   const id = req.url.split('/')[3];
   const description = req.body.description;
   router.updateDescription(description, id, (err, result) => {
@@ -77,3 +79,5 @@ app.delete('/api/homes/:id/nearbyHomes', (req, res) => {
 
 
 module.exports = app;
+
+

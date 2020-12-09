@@ -1,5 +1,22 @@
 const faker = require('faker');
 const fs = require('fs');
+const path = require('path');
+
+const deleteFileIfExists = (dest) => {
+  if (fs.existsSync(dest)) {
+    try {
+      fs.unlinkSync(dest);
+      console.log('CSV file deleted');
+    } catch (err) {
+      console.error(err);
+    }
+  } else {
+    return;
+  }
+};
+
+const csvFile = path.join(__dirname, 'pgData.csv');
+deleteFileIfExists(csvFile);
 
 const getRandomInt = (itemList) => {
   let max = itemList.length;
@@ -38,24 +55,24 @@ const createFakeListing = (() => {
 
 const createFakeListings = (() => {
   let fakeListings = [];
-  for (var i = 0; i < 10000; i++) {
+  for (let i = 0; i < 10000; i++) {
     fakeListings.push(createFakeListing());
   }
   return fakeListings;
 });
 
-let fakeListings = createFakeListings();
+const fakeListings = createFakeListings();
 
 const createHomesHeader = () => {
-  const homesStream = fs.createWriteStream(__dirname + '/CSVdata.csv');
-  homesStream.write('name,img_url,home_type,beds,description,city,cost_per_night,reviews,avg_rating,isSuperhost\n');
+  const homesStream = fs.createWriteStream(__dirname + '/pgData.csv');
+  homesStream.write('name|img_url|home_type|beds|description|city|cost_per_night|reviews|avg_rating|isSuperhost\n');
 };
 
 const addHomesToCSV = () => {
-  const homesStream = fs.createWriteStream(__dirname + '/CSVdata.csv', {flags: 'a'});
+  const homesStream = fs.createWriteStream(__dirname + '/pgData.csv', {flags: 'a'});
   for (let i = 0; i < fakeListings.length; i++) {
     const fl = fakeListings[i];
-    homesStream.write(`${fl[0]} | ${fl[1]} | ${fl[2]} | ${fl[3]} | ${fl[4]} | ${fl[5]} | ${fl[6]} | ${fl[7]} | ${fl[8]} | ${fl[9]}\n`);
+    homesStream.write(`${fl[0]}|${fl[1]}|${fl[2]}|${fl[3]}|${fl[4]}|${fl[5]}|${fl[6]}|${fl[7]}|${fl[8]}|${fl[9]}\n`);
   }
 };
 
@@ -65,8 +82,15 @@ const createCSV = () => {
     addHomesToCSV();
   }
   console.timeEnd();
-  console.log('PostGres CSV created successfully');
+  console.log('Postgres CSV created successfully');
 };
 
 createHomesHeader();
 createCSV();
+
+
+////////////////////////////////////////////////////
+
+// Use 'npm run postgres_csv' to create CSV file
+
+////////////////////////////////////////////////////
