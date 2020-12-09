@@ -35,7 +35,6 @@ app.get('/api/homes/:id/nearbyHomes', (req, res) => {
 
 app.post('/api/homes/:id/nearbyHomes', (req, res) => {
   const newHome = req.body;
-  console.log(newHome);
   router.postNearbyHome(newHome, (err, result) => {
     if (err) {
       res.status(400);
@@ -81,29 +80,4 @@ app.delete('/api/homes/:id/nearbyHomes', (req, res) => {
 
 module.exports = app;
 
-
-// {
-//   name: 'SLC Paradise AirBnB',
-//   img_url: 'http://placeimg.com/840/490',
-//   home_type: 'palace',
-//   beds: 23,
-//   description: 'moist mountains miraculously magnifiying my magical meat',
-//   city: 'salt lake city',
-//   cost_per_night: 59,
-//   reviews: 284,
-//   avg_rating: 4.79,
-//   isSuperhost: false
-// }
-// [
-//   'SLC Paradise AirBnB',
-//   'http://placeimg.com/840/490',
-//   'palace',
-//   23,
-//   'moist mountains miraculously magnifiying my magical meat',
-//   'salt lake city',
-//   59,
-//   284,
-//   4.79,
-//   false
-// ]
 

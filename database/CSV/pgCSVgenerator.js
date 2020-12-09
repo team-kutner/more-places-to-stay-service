@@ -15,7 +15,7 @@ const deleteFileIfExists = (dest) => {
   }
 };
 
-const csvFile = path.join(__dirname, 'csvData.csv');
+const csvFile = path.join(__dirname, 'pgData.csv');
 deleteFileIfExists(csvFile);
 
 const getRandomInt = (itemList) => {
@@ -26,9 +26,8 @@ const getRandomInt = (itemList) => {
 const homeTypes = ['home', 'hotel', 'cabin', 'apartment', 'mansion', 'igloo', 'hut'];
 const cities = ['menlo park', 'palo alto', 'la honda', 'san carlos', 'pescadero', 'half moon bay'];
 
-const createFakeListing = ((id) => {
+const createFakeListing = (() => {
   return [
-    id,
     faker.name.findName() + ' AirBnB',
     faker.image.imageUrl(),
     homeTypes[getRandomInt(homeTypes)],
@@ -54,30 +53,26 @@ const createFakeListing = ((id) => {
   ];
 });
 
-let index = 0;
-let counter = 1000000;
-const homesStream = fs.createWriteStream(__dirname + '/csvData.csv', {flags: 'a'});
-
-const createFakeListings = ((id) => {
+const createFakeListings = (() => {
   let fakeListings = [];
-  const incrementer = 10000;
-  for (var k = id; k < id + incrementer; k++) {
-    const listing = createFakeListing(k + 1);
-    fakeListings.push(listing);
+  for (let i = 0; i < 10000; i++) {
+    fakeListings.push(createFakeListing());
   }
-  index += incrementer;
   return fakeListings;
 });
 
+const fakeListings = createFakeListings();
+
 const createHomesHeader = () => {
-  homesStream.write('homeID|name|img_url|home_type|beds|description|city|cost_per_night|reviews|avg_rating|isSuperhost\n');
+  const homesStream = fs.createWriteStream(__dirname + '/pgData.csv');
+  homesStream.write('name|img_url|home_type|beds|description|city|cost_per_night|reviews|avg_rating|isSuperhost\n');
 };
 
 const addHomesToCSV = () => {
-  let fakeListings = createFakeListings(index);
-  for (let j = 0; j < fakeListings.length; j++) {
-    const fl = fakeListings[j];
-    homesStream.write(`${fl[0]}|${fl[1]}|${fl[2]}|${fl[3]}|${fl[4]}|${fl[5]}|${fl[6]}|${fl[7]}|${fl[8]}|${fl[9]}|${fl[10]}\n`);
+  const homesStream = fs.createWriteStream(__dirname + '/pgData.csv', {flags: 'a'});
+  for (let i = 0; i < fakeListings.length; i++) {
+    const fl = fakeListings[i];
+    homesStream.write(`${fl[0]}|${fl[1]}|${fl[2]}|${fl[3]}|${fl[4]}|${fl[5]}|${fl[6]}|${fl[7]}|${fl[8]}|${fl[9]}\n`);
   }
 };
 
@@ -87,16 +82,15 @@ const createCSV = () => {
     addHomesToCSV();
   }
   console.timeEnd();
-  console.log('CSV file created successfully');
+  console.log('Postgres CSV created successfully');
 };
 
 createHomesHeader();
 createCSV();
 
 
-
 ////////////////////////////////////////////////////
 
-// Use 'npm run csv_generator' to create CSV file
+// Use 'npm run postgres_csv' to create CSV file
 
 ////////////////////////////////////////////////////

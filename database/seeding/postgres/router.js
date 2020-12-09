@@ -11,9 +11,8 @@ const getNearbyFromID = (id, callback) => {
 };
 
 const postNearbyHome = (home, callback) => {
-  const queryStr = 'INSERT INTO homes (homeid, name, img_url, home_type, beds, description, city, cost_per_night, reviews, avg_rating, isSuperhost) VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10)';
+  const queryStr = 'INSERT INTO homes (name, img_url, home_type, beds, description, city, cost_per_night, reviews, avg_rating, isSuperhost) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)';
   const homeInfo = [home.name, home.img_url, home.home_type, home.beds, home.description, home.city, home.cost_per_night, home.reviews, home.avg_rating, home.isSuperhost];
-  console.log(homeInfo);
   pool.query(queryStr, homeInfo, callback);
 };
 
