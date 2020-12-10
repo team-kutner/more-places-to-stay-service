@@ -3,4 +3,9 @@ module.exports = {
   localDataCenter: 'datacenter1',
   keyspace: 'homesservice',
   port: 9042,
-}
+};
+
+
+
+
+
