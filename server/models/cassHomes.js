@@ -1,4 +1,4 @@
-const dbConnection = require('./dbConnection.js');
+const dbConnection = require('../../database/cassandra/dbConnection.js');
 
 const getCityHomesFromDB = (city, id, callback) => {
   const queryStr = `SELECT * FROM homes WHERE city = '${city}' LIMIT 12 ALLOW FILTERING`;

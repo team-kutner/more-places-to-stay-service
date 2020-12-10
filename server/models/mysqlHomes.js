@@ -1,4 +1,4 @@
-const dbConnection = require('./dbConnection.js');
+const dbConnection = require('../../database/mysql/dbConnection.js');
 
 const getCityHomesFromDB = (city, id, callback) => {
   const queryStr = `SELECT * FROM homes WHERE (city = '${city}' AND ID != ${id}) LIMIT 12`;
