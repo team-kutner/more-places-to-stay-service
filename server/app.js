@@ -28,8 +28,7 @@ app.use(bodyParser.json());
 //         res.status(400);
 //       } else {
 //         console.log('get all homes successful');
-//         res.send(results);
-//         res.status(200);
+//         res.status(200).send(results);
 //         res.end();
 //       }
 //     });
@@ -103,8 +102,7 @@ app.use(bodyParser.json());
 //         res.status(400);
 //       } else {
 //         console.log('get all homes successful');
-//         res.send(results.rows);
-//         res.status(200);
+//         res.status(200).send(results.rows);
 //         res.end();
 //       }
 //     });
@@ -157,7 +155,7 @@ app.use(bodyParser.json());
 
 
 
-// ============== MYSQL CRUD API REQUESTS ================ //
+// ============== CASSANDRA CRUD API REQUESTS ================ //
 
 const router = require('../database/seeding/cassandra/router.js');
 
@@ -178,8 +176,7 @@ app.get('/api/homes/:id/nearbyHomes', (req, res) => {
         res.status(400);
       } else {
         console.log('get all homes successful');
-        res.send(results.rows);
-        res.status(200);
+        res.status(200).send(results.rows);
         res.end();
       }
     });
