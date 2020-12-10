@@ -5,12 +5,12 @@ USE nearbyHomes;
 
 CREATE TABLE homes (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(250),
-  img_url TEXT,
-  home_type VARCHAR(250),
+  name VARCHAR(100),
+  img_url VARCHAR(200),
+  home_type VARCHAR(50),
   beds INT,
-  description TEXT,
-  city VARCHAR(250),
+  description VARCHAR(1000),
+  city VARCHAR(50),
   cost_per_night INT,
   reviews INT,
   avg_rating FLOAT(3, 2),

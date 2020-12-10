@@ -1,6 +1,6 @@
 const faker = require('faker');
 const s3HostedImgs = require('./imageSeeds.js');
-const dbConnection = require('../../dbConnection.js');
+const dbConnection = require('./dbConnection.js');
 
 
 const getRandomInt = (itemList) => {

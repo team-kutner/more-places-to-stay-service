@@ -1,4 +1,4 @@
-const pool = require('./config.js').pool;
+const pool = require('./dbConnection.js').pool;
 
 const getCityHomesFromDB = (city, id, callback) => {
   const queryStr = `SELECT * FROM homes WHERE (city = '${city}' AND homeid != ${id}) LIMIT 12`;
