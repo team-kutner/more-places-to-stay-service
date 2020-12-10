@@ -1,4 +1,4 @@
-const app = require('./app.js');
+const app = require('./routes.js');
 const port = 3001;
 
 app.listen(port, () => {
