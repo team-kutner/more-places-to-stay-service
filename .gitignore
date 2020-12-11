@@ -27,3 +27,6 @@ dist/bundle.js
 # CSV files
 *.csv
 
+# New Relic testing
+newrelic.js
+stress_test.yaml

@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-// ==================== MYSQL CRUD API REQUESTS ====================== //
+/* ==================== MYSQL CRUD API REQUESTS ====================== //
 
 app.get('/api/homes/:id/nearbyHomes', controller.mysql.get);
 
@@ -21,15 +21,15 @@ app.delete('/api/homes/:id/nearbyHomes', controller.mysql.remove);
 // ==================================================================== */
 
 
-/* ================== POSTGRES CRUD API REQUESTS ==================== //
+// ================== POSTGRES CRUD API REQUESTS ==================== //
 
-// app.get('/api/homes/:id/nearbyHomes', controller.postgres.get);
+app.get('/api/homes/:id/nearbyHomes', controller.postgres.get);
 
-// app.post('/api/homes/:id/nearbyHomes', controller.postgres.post);
+app.post('/api/homes/:id/nearbyHomes', controller.postgres.post);
 
-// app.put('/api/homes/:id/nearbyHomes', controller.postgres.update);
+app.put('/api/homes/:id/nearbyHomes', controller.postgres.update);
 
-// app.delete('/api/homes/:id/nearbyHomes', controller.postgres.remove);
+app.delete('/api/homes/:id/nearbyHomes', controller.postgres.remove);
 
 // ==================================================================== */
 
