@@ -18,7 +18,8 @@
     "csv_test": "node database/CSV/testCSVgenerator.js",
     "postgres_seed": "node database/postgres/postgresSeeder.js",
     "cassy_seed": "node database/cassandra/cassySeeder.js",
-    "mysql_seed": "node database/seeding/mysqlseeder.js"
+    "mysql_seed": "node database/seeding/mysqlseeder.js",
+    "stress_test": "artillery run ./stress_test.yaml"
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -46,6 +47,7 @@
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
+    "artillery": "^1.6.1",
     "babel-loader": "^8.2.1",
     "babel-plugin-styled-components": "^1.11.1",
     "babel-polyfill": "^6.26.0",
