@@ -65,7 +65,7 @@ const remove = (req, res) => {
       res.end();
     }
   });
-}
+};
 
 module.exports = {
   get,

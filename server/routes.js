@@ -25,7 +25,7 @@ app.delete('/api/homes/:id/nearbyHomes', controller.mysql.remove);
 
 app.get('/api/homes/:id/nearbyHomes', controller.postgres.get);
 
-app.post('/api/homes/:id/nearbyHomes', controller.postgres.post);
+app.post('/api/homes/create/nearbyHomes', controller.postgres.post);
 
 app.put('/api/homes/:id/nearbyHomes', controller.postgres.update);
 
