@@ -28,5 +28,7 @@ dist/bundle.js
 *.csv
 
 # New Relic testing
-newrelic.js
 stress_test.yaml
+
+# env variables
+*.env
