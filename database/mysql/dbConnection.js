@@ -1,6 +1,6 @@
-const mysql2 = require('mysql2');
-const config = require('./config.js');
+// const mysql2 = require('mysql2');
+// const config = require('./config.js');
 
-const dbConnection = mysql2.createConnection(config);
+// const dbConnection = mysql2.createConnection(config);
 
-module.exports = dbConnection;
+// module.exports = dbConnection;
