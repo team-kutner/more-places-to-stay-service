@@ -27,8 +27,9 @@ dist/bundle.js
 # CSV files
 *.csv
 
-# New Relic testing
+# New Relic / Loader testing
 stress_test.yaml
+*.txt
 
 # env variables
 *.env
