@@ -31,6 +31,8 @@ app.put('/api/homes/:id/nearbyHomes', controller.postgres.update);
 
 app.delete('/api/homes/:id/nearbyHomes', controller.postgres.remove);
 
+app.get('/loaderio-9ae0d6f00a09b5b84b9c2062ca2fb157', controller.postgres.token);
+
 // ==================================================================== */
 
 

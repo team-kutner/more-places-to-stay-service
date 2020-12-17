@@ -1,9 +1,13 @@
+/* eslint-disable camelcase */
+require('dotenv').config();
+
 module.exports = {
-  host: 'localhost',
-  user: 'mitchmcdermott',
-  password: 'mitch',
-  database: 'homesservice',
-  port: 5432,
-  // eslint-disable-next-line camelcase
-  db_URI: 'postgres://postgres:mitch@localhost:5432/homesservice'
+  host: process.env.PG_HOST,
+  user: process.env.PG_USER,
+  password: process.env.PG_PASSWORD,
+  database: process.env.PG_DATABASE,
+  port: process.env.PG_PORT,
+  db_URI: process.env.PG_DB_URI
 };
+
+

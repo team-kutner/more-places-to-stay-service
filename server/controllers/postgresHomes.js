@@ -1,26 +1,42 @@
 const models = require('../models');
+const redis = require('../../database/redis/dbConnection.js');
 
 const get = (req, res) => {
   const ID = Number(req.params.id);
-  models.postgres.getNearbyFromID(ID, (err, result) => {
-    if (err) {
-      console.error('get request failed: ', err);
-      res.status(400);
-    } else {
-      res.status(200);
-      console.log('get home by id successful');
-    }
-    models.postgres.getCityHomesFromDB(result.rows[0].city, ID, (err, results) => {
-      if (err) {
-        console.error('get all homes failed: ', err);
-        res.status(400);
+  // check if its in redis
+  redis.getAsync(`homeID${ID}`)
+    .then(homes => {
+      // if it's not, query database
+      if (homes === null) {
+        models.postgres.getNearbyFromID(ID, (err, result) => {
+          if (err) {
+            console.error('get request failed: ', err);
+            res.status(400);
+          } else {
+            console.log('get home by id successful');
+          }
+          models.postgres.getCityHomesFromDB(result.rows[0].city, ID, (err, results) => {
+            if (err) {
+              console.error('get all homes failed: ', err);
+              res.status(400);
+            } else {
+              console.log('get all homes successful');
+              // set homeId in redis with stringified resutls
+              redis.setAsync(`homeID${ID}`, JSON.stringify(results.rows));
+              res.status(200).send(results.rows);
+              res.end();
+            }
+          });
+        });
       } else {
-        console.log('get all homes successful');
-        res.status(200).send(results.rows);
-        res.end();
+        console.log(homes);
+        res.send(homes);
       }
+    })
+    .catch(err => {
+      console.error('redis get error: ', err);
+      res.status(400);
     });
-  });
 };
 
 const post = (req, res) => {
@@ -67,10 +83,15 @@ const remove = (req, res) => {
   });
 };
 
+const token = (req, res) => {
+  res.status(200).send('loaderio-9ae0d6f00a09b5b84b9c2062ca2fb157');
+};
+
 module.exports = {
   get,
   post,
   update,
-  remove
+  remove,
+  token
 };
 
