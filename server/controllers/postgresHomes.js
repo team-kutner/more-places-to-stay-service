@@ -29,7 +29,6 @@ const get = (req, res) => {
           });
         });
       } else {
-        console.log(homes);
         res.send(homes);
       }
     })

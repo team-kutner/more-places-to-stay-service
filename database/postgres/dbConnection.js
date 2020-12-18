@@ -1,5 +1,6 @@
 const config = require('./config.js');
 const { Pool, Client } = require('pg');
+require('ligma');
 
 const pool = new Pool(config);
 
