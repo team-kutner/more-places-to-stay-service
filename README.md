@@ -67,3 +67,4 @@ The below URL's should be prefixed with /api/homes/:id
 |Update description of home |UPDATE|/updateDescription|
 |Delete a nearby home       |DELETE|/nearbyHomes      |
 
+### ALL THREE DATABASES WORK IF YOU UNCOMMENT THE API REQs IN ROUTES.JS

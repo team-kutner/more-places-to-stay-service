@@ -9,5 +9,3 @@ module.exports = {
   port: process.env.PG_PORT,
   db_URI: process.env.PG_DB_URI
 };
-
-
