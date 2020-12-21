@@ -1,6 +1,6 @@
-require('newrelic');
+require('dotenv').config();
 const app = require('./routes.js');
-const port = 3001;
+const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log(`your server is running listening on port ${port}`);

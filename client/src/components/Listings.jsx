@@ -4,7 +4,6 @@ const { styled } = global;
 import Listing from './Listing.jsx';
 import { ListingsBody } from './StyledComponents.jsx';
 
-
 const Listings = ({ listingData, clickStar, starred, firstImg }) => {
   return (
     <ListingsBody>

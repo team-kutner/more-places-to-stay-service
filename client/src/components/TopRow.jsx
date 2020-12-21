@@ -5,9 +5,7 @@ import { Header, Banner } from './StyledComponents.jsx';
 import ToggleContainer from './ToggleContainer.jsx';
 import { AiOutlineHeart } from 'react-icons/ai';
 
-
 Banner.displayName = 'Banner';
-
 
 const TopRow = ( { clickRight, clickLeft, pageNum }) => {
 
