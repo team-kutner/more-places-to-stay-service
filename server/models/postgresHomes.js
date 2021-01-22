@@ -1,4 +1,5 @@
 const pool = require('../../database/postgres/dbConnection.js').pool;
+console.log(pool);
 
 const getCityHomesFromDB = (city, id, callback) => {
   const queryStr = `SELECT * FROM homes WHERE (city = '${city}' AND homeid != ${id}) LIMIT 12`;
